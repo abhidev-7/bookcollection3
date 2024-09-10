@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  # Define routes for the books resource
+  resources :user_books
+  resources :users
+  root 'user_books#index'
+
   resources :books do
-    # Add a member route to handle /books/:id/remove for the remove confirmation
     member do
-      get 'remove'  # This adds a route to display the remove confirmation page
+      get :delete
     end
   end
-
-  # Set the root route to the index action of the BooksController
-  root 'books#index'
 end
