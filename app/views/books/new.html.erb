@@ -1,0 +1,11 @@
+<%= link_to '← Back To Home', root_path %>
+<% if flash[:notice] %>
+  <h3><%= flash[:notice] %></h3>
+<% end %>
+
+<%= form_with model: @book, local: true do |form| %>
+  <br>
+  <%= form.text_field :title, placeholder: 'Title', required: true, style: 'margin-bottom: 2%;' %>
+  <br>
+  <%= form.submit 'Add Book' %>
+<% end %>

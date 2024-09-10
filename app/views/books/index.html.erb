@@ -1,0 +1,30 @@
+<!-- Display flash messages -->
+<% if flash[:notice] %>
+  <div style="background-color: #f0f8ff; padding: 10px; margin-bottom: 20px; border: 1px solid #dcdcdc; border-radius: 5px;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<h1>Book Collection</h1>
+<h2>Recent Action:</h2>
+<% if flash[:notice] %>
+  <h3><%= flash[:notice] %></h3>
+<% else %>
+  <h3>None</h3>
+<% end %>
+
+<div>
+  <span style="display:inline-block; width: 130px; font-weight:bold; text-decoration:underline">Title</span>
+</div>
+
+<% @books.each do |book| %>
+  <div>
+    <span style="display:inline-block; width: 130px;"><%= book.title %></span>
+    <%= link_to 'Remove', book_path(book), method: :delete, data: { confirm: 'Are you sure?' }, style: 'margin-left: 10px;' %>
+    <%= link_to 'Edit', edit_book_path(book), style: 'margin-left: 10px;' %>
+    <%= link_to 'Read', book_path(book), style: 'margin-left: 10px;' %>
+  </div>
+<% end %>
+
+<br>
+<%= link_to 'Add Book', new_book_path %>

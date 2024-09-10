@@ -1,0 +1,8 @@
+<%= link_to '← Back To Home', root_path %> <!-- Link back to the home page -->
+<h4>Are you sure you want to delete <%= @book.title %>?</h4> <!-- Confirmation prompt -->
+
+<!-- Button to remove the book with confirmation prompt -->
+<%= button_to 'Remove Book', book_path(@book), method: :delete, data: { confirm: 'Are you sure you want to delete this book?' }, style: 'margin-top: 1%;' %>
+
+<!-- Cancel button to go back to the home page without making changes -->
+<%= link_to 'Cancel', root_path, style: 'margin-top: 1%;' %>
